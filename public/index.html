@@ -13,7 +13,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-50467643-6"></script>
     <script>
       (function () {
-        if (location.hostname === "marcomontalbano.github.io") {
+        if (location.protocol === 'https:') {
+          location.href = location.href.replace(location.protocol, 'http:');
+          return;
+        }
+        if (location.hostname === "speedtest-do.marcomontalbano.com") {
           window.dataLayer = window.dataLayer || [];
           function gtag() { dataLayer.push(arguments); }
           gtag('js', new Date());
