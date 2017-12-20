@@ -1,0 +1,49 @@
+{
+  "name": "speedtest-for-digitalocean",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Run speed tests for all DigitalOcean datacenters faster than ever.",
+  "homepage": "http://speedtest-do.marcomontalbano.com/",
+  "author": {
+    "name": "Marco Montalbano",
+    "email": "me@marcomontalbano.com",
+    "url": "https://marcomontalbano.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcomontalbano/speedtest-for-digitalocean"
+  },
+  "keywords": [
+    "mmontalbano",
+    "marcomontalbano",
+    "fastest",
+    "speedtest",
+    "speed test",
+    "digitalocean",
+    "datacenter"
+  ],
+  "engines": {
+    "node": "6.x || 7.x || 8.x"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "flux": "^3.1.3",
+    "gh-pages": "^1.1.0",
+    "npm-run-all": "^4.1.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.0.17",
+    "uikit": "^3.0.0-beta.35"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "gh-pages": "node ./scripts/gh-pages.js",
+    "deploy": "npm-run-all build gh-pages"
+  }
+}

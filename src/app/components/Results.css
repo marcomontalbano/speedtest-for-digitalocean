@@ -1,0 +1,29 @@
+.Results {
+  margin-top: 25px;
+  cursor: default;
+}
+
+.Results table {
+  width: 100%;
+}
+
+.Results table th,
+.Results table td {
+  text-align: center;
+}
+
+.Results table th {
+  width: 20%;
+}
+
+.Results table th:nth-child(1) {
+  width: 10%;
+}
+.Results table th:nth-child(2) {
+  width: 10%;
+}
+
+.Results .uk-table > tr.uk-active,
+.Results .uk-table tbody tr.uk-active {
+  background-color: #f6fbff;
+}

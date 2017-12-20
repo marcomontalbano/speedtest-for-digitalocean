@@ -1,0 +1,6 @@
+export default {
+    CHANGED_TEST: 'CHANGED_TEST',
+    CHANGED_RESULTS: 'CHANGED_RESULTS',
+    STARTED: 'STARTED',
+    STOPPED: 'STOPPED',
+};

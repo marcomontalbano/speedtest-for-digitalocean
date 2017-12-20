@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#438eff">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%//apple-touch-icon.png">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png">
+    <title>Speed Test for DigitalOcean</title>
+    <meta name="description" content="Run speed tests for all DigitalOcean datacenters faster than ever.">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-50467643-6"></script>
+    <script>
+      (function () {
+        if (location.hostname === "marcomontalbano.github.io") {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', 'UA-50467643-6');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+
+    <header class="dbr-hero-header uk-block uk-block-large uk-cover-background uk-flex uk-flex-middle uk-contrast">
+      <a class="github-link" rel="noopener noreferrer" target="_blank" href="https://github.com/marcomontalbano/speedtest-for-digitalocean">
+        <img src="%PUBLIC_URL%/github-logo.svg" alt="GitHub logo" />
+      </a>
+      <div class="uk-container uk-container-center">
+        <section class="uk-grid uk-grid-match">
+          <div class="uk-width-medium-1-1">
+            <div class="uk-panel uk-text-center">
+              <h1>Speed Test for DigitalOcean</h1>
+              <h3>Run speed tests for all DigitalOcean datacenters faster than ever.</h3>
+              <p>
+                <small>
+                  This tool uses the same service used by <b>speedtest-*.digitalocean.com</b> so the result should be the same.
+                  <br />
+                  <i>
+                    If for some reason this site violates DigitalOcean copyright, please
+                    <a rel="noopener noreferrer" target="_blank" href="https://github.com/marcomontalbano/speedtest-for-digitalocean/issues/new">open an issue</a>.
+                    I'll modify the project accordingly.
+                  </i>
+                </small>
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </header>
+
+    <div id="root"></div>
+  </body>
+</html>

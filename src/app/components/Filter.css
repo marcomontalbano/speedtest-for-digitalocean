@@ -1,0 +1,7 @@
+.Filter table {
+  width: 100%;
+}
+
+.Filter .check-only-fastests {
+  line-height: 40px;
+}
