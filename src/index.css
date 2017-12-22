@@ -1,9 +1,30 @@
+/*** GLOBAL ***/
+
+body {
+  font-weight: 300;
+  font-size: 16px;
+}
+
 #speedcheckerdiv {
-  /*display: none;*/
   visibility: hidden;
   height: 0;
   overflow: hidden;
 }
+
+.uk-button-primary {
+  background-color: #0080FF;
+}
+.uk-radio:checked, .uk-checkbox:checked, .uk-checkbox:indeterminate {
+  background-color: #0080FF;
+}
+.uk-radio:focus, .uk-checkbox:focus {
+  border-color: #0080FF;
+}
+.uk-radio:disabled, .uk-checkbox:disabled {
+  background-color: #f8f8f8;
+  border-color: #e5e5e5;
+}
+
 a {
   transition: color .3s, border .3s;
   border-bottom: 1px solid transparent;
@@ -12,53 +33,23 @@ a:hover {
   text-decoration: none;
   border-bottom: 1px solid;
 }
-header a {
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
-  padding-bottom: 1px;
-  font-weight: 600;
-  border-bottom: 1px solid transparent;
+
+.do-account {
+  margin-top: 30px;
 }
-header a:hover {
-  color: #c1deff;
-  text-decoration: none;
-  border-bottom: 1px solid;
-  border-color: #c1deff;
+.do-account span, .do-account img {
+  width: 220px;
 }
-body {
-  font-weight: 300;
-  font-size: 16px;
+.do-account a, .do-account a:hover {
+  border: 0px hidden;
+  display: inline-block;
 }
-h1 {
-  font-size: 50px;
-  line-height: 60px;
-  font-weight: 300;
-  letter-spacing: 5px;
-  color: white;
-}
-h3 {
-  margin-top: 25px;
-  font-size: 22px;
-  line-height: unset;
-  font-weight: 300;
-  letter-spacing: 4px;
-  color: white;
-}
-@media (max-width: 450px) {
-  h1 {
-    padding: 25px 0 0;
-  }
-}
-header {
-  cursor: default;
-  background: linear-gradient(180deg,#66a5ff,#0069ff);
-  min-height: 230px;
-  padding: 20px 0 30px;
-  margin-bottom: 15px;
-  color: white;
-  overflow: hidden;
-  position: relative;
+.do-account span {
+  padding-left: 50px;
+  display: block;
+  margin: 0 auto;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .github-link {
@@ -75,7 +66,7 @@ header {
   width: 36px;
   left: 60px;
   top: 35px;
-  color: #438eff;
+  color: #0080FF;
   transform: translate(-50%, -50%);
 }
 .github-link::before {
@@ -85,4 +76,54 @@ header {
   border-left: 60px solid transparent;
   border-right: 60px solid transparent;
   border-bottom: 60px solid white;
+}
+
+
+
+/*** HEADER ***/
+
+header {
+  cursor: default;
+  background: linear-gradient(180deg,#66a5ff,#0069ff);
+  min-height: 230px;
+  padding: 20px 0 30px;
+  margin-bottom: 15px;
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+header a {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  padding-bottom: 1px;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+}
+header a:hover {
+  color: #c1deff;
+  text-decoration: none;
+  border-bottom: 1px solid;
+  border-color: #c1deff;
+}
+
+header h1 {
+  font-size: 50px;
+  line-height: 60px;
+  font-weight: 300;
+  letter-spacing: 5px;
+  color: white;
+}
+header h3 {
+  margin-top: 25px;
+  font-size: 22px;
+  line-height: unset;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: white;
+}
+@media (max-width: 450px) {
+  header h1 {
+    padding: 25px 0 0;
+  }
 }
