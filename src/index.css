@@ -52,6 +52,10 @@ a:hover {
   text-align: center;
 }
 
+.github-buttons {
+  margin-top: 25px;
+}
+
 .github-link {
   position: absolute;
   right: -60px;
