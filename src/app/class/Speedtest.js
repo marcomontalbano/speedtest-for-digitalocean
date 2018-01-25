@@ -34,12 +34,20 @@ export default class Speedtest extends SpeedtestDigitalocean {
     }
 
     _run() {
+        // Enable navigation prompt
+        window.onbeforeunload = function () {
+            return true;
+        };
+
         super._run();
         SpeedtestAction.start();
         SpeedtestAction.changeTest(this.currentRunningTest);
     }
 
     stop() {
+        // Remove navigation prompt
+        window.onbeforeunload = null;
+
         super.stop();
         SpeedtestAction.stop();
     }
