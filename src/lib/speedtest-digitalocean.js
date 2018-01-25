@@ -107,7 +107,7 @@ class SpeedtestDigitalocean {
 
         this.options = _.merge({
             checkFastests: false,
-            fastestsQnt: 5,
+            fastestsQnt: 4,
 
         }, options || {});
 

@@ -10,22 +10,19 @@
     <title>Speed Test for DigitalOcean</title>
     <meta name="description" content="Run speed tests for all DigitalOcean datacenters faster than ever.">
     <meta name="author" content="Marco Montalbano">
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-50467643-6"></script>
     <script>
       (function () {
         if (location.protocol === 'https:') {
           location.href = location.href.replace(location.protocol, 'http:');
           return;
         }
-        if (location.hostname === "speedtest-do.marcomontalbano.com") {
-          window.dataLayer = window.dataLayer || [];
-          function gtag() { dataLayer.push(arguments); }
-          gtag('js', new Date());
-          gtag('config', 'UA-50467643-6');
-        }
+        var isProd = location.hostname === 'speedtest-do.marcomontalbano.com';
+        window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+        ga('create', isProd ? 'UA-50467643-6' : 'UA-50467643-7', 'auto');
+        ga('send', 'pageview');
       })();
     </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
   </head>
   <body>
     <noscript>
