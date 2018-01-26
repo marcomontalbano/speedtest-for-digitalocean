@@ -2,10 +2,10 @@ import _ from 'lodash';
 import datacenter from './datacenter';
 import ResultStorage from './ResultStorage';
 
-class SpeedtestDigitalocean {
+export default class SpeedtestDigitalocean {
 
     constructor() {
-        window.addEventListener('message', this._messageReceived.bind(this), false);
+        window.addEventListener('message', this.__onMessageHandler.bind(this), false);
 
         this.logs = [];
 
@@ -20,28 +20,17 @@ class SpeedtestDigitalocean {
         return datacenter;
     }
 
-    get currentRunningTest() {
+    get currentTest() {
         return this.currentDatacenterSet[this.currentIndex];
     }
 
-    _getCurrentTestResults(key) {
-        return this.resultStorage.get(this.currentRunningTest.name, key);
+    currentTest_get(key) {
+        return this.resultStorage.get(this.currentTest.name, key);
     }
 
-    _updateCurrentTestResults(key, value) {
-        this.resultStorage.update(this.currentRunningTest.name, key, value);
-        this.resultStorage.sortBy('ping');
-    }
-
-    _messageReceived(event) {
-        const type = event.data.type;
-        const value = event.data.value;
-
-        this.logs.push(event);
-
-        if (this[type]) {
-            this[type](value);
-        }
+    currentTest_update(key, value) {
+        this.resultStorage.update(this.currentTest.name, key, value);
+        this.resultStorage.orderBy('ping');
     }
 
     _runNext() {
@@ -66,12 +55,14 @@ class SpeedtestDigitalocean {
 
                 this._run();
             } else {
-                this._completed(this.resultStorage.results);
+                this._completed();
             }
         }
     }
 
     _run() {
+        this.currentTest_update('test', this.currentTest);
+
         window.sc_skin = '';
         window.sc_autostart = 'true';
         window.sc_bgc = '0xFFFFFF';
@@ -83,24 +74,20 @@ class SpeedtestDigitalocean {
         window.version = 3;
         window.sc_userid = 52722000;
         window.sc_forceSecureWebsockets = 0;
-        window.serverUrl = this.currentRunningTest.url;
-        window.serverTitle = this.currentRunningTest.name;
+        window.serverUrl = this.currentTest.url;
+        window.serverTitle = this.currentTest.name;
         window.license = '';
         window.server = 'php';
         window.latencyMeasurementType = 'icmp';
-
-        this._updateCurrentTestResults('name', this.currentRunningTest.name);
-        this._updateCurrentTestResults('test', this.currentRunningTest);
 
         let sc_script = document.createElement('script');
         sc_script.setAttribute('src', ((('https:' === document.location.protocol) ? 'https' : 'http') + '://www.speedcheckercdn.com/speedchecker.js'));
         document.getElementsByTagName('head')[0].appendChild(sc_script);
     }
 
-    _completed(results) {
+    _completed() {
         this.stop();
         this.cleanResults();
-        return results;
     }
 
     start(options) {
@@ -130,7 +117,7 @@ class SpeedtestDigitalocean {
     }
 
     cleanResults() {
-        this.resultStorage = new ResultStorage();
+        this.resultStorage.clean();
     }
 
     stop() {
@@ -141,58 +128,64 @@ class SpeedtestDigitalocean {
     }
 
     /**
-     * 
+     * speedchecker messages
      */
 
-    speedcheckerDebug(value) { return value; }
-    speedcheckerDownloadPrepared(value) { return value; }
-    speedcheckerDownloadStarted(value) { return value; }
-    speedcheckerLinkValid(value) { return value; }
-    speedcheckerPingFinished(value) { return value; }
-    speedcheckerPingStarted(value) { return value; }
-    speedcheckerReady(value) { return value; }
-    speedcheckerStartRequired(value) { return value; }
-    speedcheckerStarted(value) { return value; }
-    speedcheckerUploadPrepared(value) { return value; }
-    speedcheckerUploadStarted(value) { return value; }
+    __onMessageHandler(event) {
+        const type = `__${event.data.type}`;
+        const value = event.data.value;
 
-    speedcheckerError(value) {
-        this._updateCurrentTestResults('retry', (this._getCurrentTestResults('retry') ? this._getCurrentTestResults('retry') : 0) + 1);
-        this._updateCurrentTestResults('error', value);
+        this.logs.push(event);
+
+        if (this[type]) {
+            this[type](value);
+        }
+    }
+
+    __speedcheckerDebug(value) {}
+    __speedcheckerDownloadPrepared(value) {}
+    __speedcheckerDownloadStarted(value) {}
+    __speedcheckerLinkValid(value) {}
+    __speedcheckerPingFinished(value) {}
+    __speedcheckerPingStarted(value) {}
+    __speedcheckerReady(value) {}
+    __speedcheckerStartRequired(value) {}
+    __speedcheckerStarted(value) {}
+    __speedcheckerUploadPrepared(value) {}
+    __speedcheckerUploadStarted(value) {}
+
+    __speedcheckerError(value) {
+        this.currentTest_update('retry', (this.currentTest_get('retry') ? this.currentTest_get('retry') : 0) + 1);
+        this.currentTest_update('error', value);
         this._run();
     }
 
-    speedcheckerPingTestFinished(value) {
-        const ping = this._updateCurrentTestResults('ping', value);
+    __speedcheckerPingTestFinished(value) {
+        this.currentTest_update('ping', value);
 
         if (this.options.checkFastests === true) {
             this._runNext();
         }
-
-        return ping;
     }
 
-    speedcheckerDownloadProgress(value) {
-        return this._updateCurrentTestResults('download', value[0]);
+    __speedcheckerDownloadProgress(value) {
+        this.currentTest_update('download', value[0]);
     }
 
-    speedcheckerDownloadFinished(value) {
-        return this._updateCurrentTestResults('download', value);
+    __speedcheckerDownloadFinished(value) {
+        this.currentTest_update('download', value);
     }
 
-    speedcheckerUploadProgress(value) {
-        return this._updateCurrentTestResults('upload', value[0]);
+    __speedcheckerUploadProgress(value) {
+        this.currentTest_update('upload', value[0]);
     }
 
-    speedcheckerUploadFinished(value) {
-        return this._updateCurrentTestResults('upload', value);
+    __speedcheckerUploadFinished(value) {
+        this.currentTest_update('upload', value);
     }
 
-    speedcheckerTakenTestSaved(value) {
+    __speedcheckerTakenTestSaved(value) {
         this._runNext();
-        return value;
     };
 
 }
-
-export default SpeedtestDigitalocean;

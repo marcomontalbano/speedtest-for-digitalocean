@@ -11,6 +11,7 @@ class Filter extends Component {
         this.state = {
             speedtestStore: SpeedtestStore.getState(),
             checkFastests: true,
+            filterOpened: false,
         };
     }
 
@@ -30,7 +31,7 @@ class Filter extends Component {
 
     renderDatacenters(items) {
         return items.length > 0 ? _.map(items, (item, key) => (
-            <label key={key} className="uk-width-1-3">
+            <label key={key} className="uk-width-1-4">
                 <input className="uk-checkbox" type="checkbox" defaultChecked={true} /> {item.name}
             </label>
         )) : null;
@@ -46,6 +47,12 @@ class Filter extends Component {
         }
     }
 
+    filterHandler(e) {
+        this.setState({
+            filterOpened: !this.state.filterOpened
+        });
+    }
+
     checkFastestsHandler(e) {
         this.setState({
             checkFastests: e.target.checked
@@ -56,20 +63,6 @@ class Filter extends Component {
         return (
             <div className="Filter uk-container">
                 <div className="uk-grid">
-                    {/*
-                    <div className="uk-width-1-1 uk-width-4-5@s">
-                        <form>
-                            <fieldset className="uk-fieldset">
-
-                                <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                                    {this.renderDatacenters(this.props.speedtest.datacenters)}
-                                </div>
-
-                            </fieldset>
-                        </form>
-                    </div>
-                    */}
-                    
                     <div className="check-only-fastests uk-width-1-1 uk-width-4-5@s uk-text-right">
                         <form>
                             <fieldset className="uk-fieldset">
@@ -79,10 +72,28 @@ class Filter extends Component {
                             </fieldset>
                         </form>
                     </div>
+                    { /*<div className="uk-width-1-1 uk-width-1-5@s uk-text-center">
+                        <button className="uk-button uk-button-default uk-width-1-1" onClick={this.filterHandler.bind(this)}>filter</button>
+                    </div>*/ }
                     <div className="uk-width-1-1 uk-width-1-5@s uk-text-center">
                         <button className="uk-button uk-button-primary uk-width-1-1" onClick={this.startStopHandler.bind(this)}>{this.state.speedtestStore.isRunning ? 'stop' : 'start'}</button>
                     </div>
                 </div>
+                { this.state.filterOpened &&
+                    <div className="uk-grid">
+                        <div className="uk-width-1-1">
+                            <form>
+                                <fieldset className="uk-fieldset">
+
+                                    <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                                        {this.renderDatacenters(this.props.speedtest.datacenters)}
+                                    </div>
+
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                }
             </div>
         );
     }

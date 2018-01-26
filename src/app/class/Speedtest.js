@@ -1,4 +1,4 @@
-import SpeedtestDigitalocean from '../../lib/speedtest-digitalocean';
+import SpeedtestDigitalocean from '../../lib/SpeedtestDigitalocean';
 import SpeedtestAction from '../actions/SpeedtestAction';
 
 export default class Speedtest extends SpeedtestDigitalocean {
@@ -6,46 +6,45 @@ export default class Speedtest extends SpeedtestDigitalocean {
     _gaEvent(key, value) {
         window.ga('send', {
             hitType: 'event',
-            eventCategory: this.currentRunningTest.name,
+            eventCategory: this.currentTest.name,
             eventAction: key,
             eventLabel: value
         });
     }
 
-    _updateCurrentTestResults(key, value) {
-        var newValue = super._updateCurrentTestResults(key, value);
+    currentTest_update(key, value) {
+        super.currentTest_update(key, value);
         SpeedtestAction.changeResults(this.resultStorage.results);
-        return newValue;
     }
 
-    speedcheckerPingTestFinished(value) {
+    __speedcheckerPingTestFinished(value) {
         this._gaEvent('ping', value);
-        return super.speedcheckerPingTestFinished(value);
+        super.__speedcheckerPingTestFinished(value);
     }
 
-    speedcheckerDownloadFinished(value) {
+    __speedcheckerDownloadFinished(value) {
         this._gaEvent('download', value);
-        return super.speedcheckerDownloadFinished(value);
+        super.__speedcheckerDownloadFinished(value);
     }
 
-    speedcheckerUploadFinished(value) {
+    __speedcheckerUploadFinished(value) {
         this._gaEvent('upload', value);
-        return super.speedcheckerUploadFinished(value);
+        super.__speedcheckerUploadFinished(value);
     }
 
     _run() {
-        // Enable navigation prompt
+        // enable navigation prompt
         window.onbeforeunload = function () {
             return true;
         };
 
         super._run();
         SpeedtestAction.start();
-        SpeedtestAction.changeTest(this.currentRunningTest);
+        SpeedtestAction.changeTest(this.currentTest);
     }
 
     stop() {
-        // Remove navigation prompt
+        // remove navigation prompt
         window.onbeforeunload = null;
 
         super.stop();

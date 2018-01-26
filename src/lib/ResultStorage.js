@@ -1,44 +1,52 @@
 import _ from 'lodash';
 
-class ResultStorage {
+let results = Symbol();
+
+export default class ResultStorage {
 
     constructor() {
-        this.results = [];
+        this.clean();
+    }
+
+    get results() {
+        return this[results];
+    }
+
+    indexOf(name) {
+        return parseInt(_.findKey(this[results], { 'name': name }), 10);
     }
 
     update(name, key, value) {
-        let index = this._getIndex(name);
+        let index = this.indexOf(name);
 
-        if (index === undefined) {
-            this.results.push({
+        if (isNaN(index)) {
+            this[results].push({
                 name: name
             });
         }
 
-        index = this._getIndex(name);
+        index = this.indexOf(name);
 
-        this.results[index][key] = value;
+        this[results][index][key] = value;
 
         return value;
     }
 
-    _getIndex(name) {
-        return _.findKey(this.results, { 'name': name });
-    }
-
     get(name, key) {
-        let result = _.findKey(this.results, { 'name': name });
+        let result = _.findKey(this[results], { 'name': name });
 
         if (key === undefined) {
-            return this.results[result];
+            return this[results][result];
         }
 
-        return this.results[result][key];
+        return this[results][result][key];
     }
 
-    sortBy(key) {
-        this.results = _.sortBy(this.results, [key]);
+    orderBy(key, sort = 'asc') {
+        this[results] = _.orderBy(this[results], _.isArray(key) ? key : [key], _.isArray(sort) ? sort : [sort]);
+    }
+
+    clean() {
+        this[results] = [];
     }
 }
-
-export default ResultStorage;
