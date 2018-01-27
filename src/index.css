@@ -62,6 +62,7 @@ a:hover {
   top: 0;
   transform: rotate(45deg);
   font-size: 0;
+  z-index: 1;
 }
 .github-link i,
 .github-link img {
