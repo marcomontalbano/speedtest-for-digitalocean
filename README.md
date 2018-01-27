@@ -17,7 +17,7 @@ Just click start!
 
 ![Speedtest for DigitalOcean - Screenshot](public/images/speedtest-for-digitalocean-screenshot-without-header.jpg)
 
-This tool uses the same service used by _speedtest-*.digitalocean.com_ so the result should be the same.
+This tool uses the same service used by __speedtest-*.digitalocean.com__ so the result should be the same.
 
 ## Need an account for DigitalOcean?
 

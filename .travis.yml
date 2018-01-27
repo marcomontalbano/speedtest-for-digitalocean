@@ -9,14 +9,14 @@ script:
   - yarn test
   - yarn build
 
-stages:
-  - test
-  - name: deploy
-    if: branch = master
-
-jobs:
-  include:
-    - stage: deploy
-      node_js: "8"
-      script:
-        - yarn deploy
+#stages:
+#  - test
+#  - name: deploy
+#    if: branch = master
+#
+#jobs:
+#  include:
+#    - stage: deploy
+#      node_js: "8"
+#      script:
+#        - yarn deploy
