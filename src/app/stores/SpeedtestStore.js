@@ -10,7 +10,7 @@ class SpeedtestStore extends ReduceStore {
     getInitialState() {
         return {
             results: [],
-            test: {},
+            currentDatacenter: {},
             isRunning: false
         };
     }
@@ -25,7 +25,7 @@ class SpeedtestStore extends ReduceStore {
                 newState.isRunning = false;
                 return newState;
             case ActionTypes.CHANGED_TEST:
-                newState.test = action.value;
+                newState.currentDatacenter = action.value;
                 return newState;
             case ActionTypes.CHANGED_RESULTS:
                 newState.results = action.value;

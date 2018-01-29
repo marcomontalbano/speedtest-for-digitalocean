@@ -5,3 +5,17 @@
 .Filter .check-only-fastests {
   line-height: 40px;
 }
+
+.Filter .Continent {
+  margin: 10px 0;
+}
+
+.Filter .Continent > label {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.Filter .Continent .Datacenter {
+  font-size: 90%;
+  vertical-align: middle;
+}

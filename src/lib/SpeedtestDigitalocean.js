@@ -50,7 +50,7 @@ export default class SpeedtestDigitalocean {
                 });
 
                 this.currentDatacenterSet = this.currentDatacenterSet.map(function (o) {
-                    return o.test;
+                    return o.datacenter;
                 });
 
                 this._run();
@@ -61,7 +61,7 @@ export default class SpeedtestDigitalocean {
     }
 
     _run() {
-        this.currentTest_update('test', this.currentTest);
+        this.currentTest_update('datacenter', this.currentTest);
 
         window.sc_skin = '';
         window.sc_autostart = 'true';
@@ -92,13 +92,17 @@ export default class SpeedtestDigitalocean {
 
     start(options) {
 
-        this.options = _.merge({
+        this.stop();
+
+        this.options = _.assign({
+            filterDatacenters: this.currentDatacenterSet.map(o => o.name),
             checkFastests: false,
             fastestsQnt: 4,
-
         }, options || {});
 
-        this.stop();
+        this.currentDatacenterSet = _.filter(this.currentDatacenterSet, (o) => {
+            return this.options.filterDatacenters.indexOf(o.name) >= 0;
+        });
 
         // create scope if it doesn't exist
         if (!document.getElementById('speedcheckerdiv')) {

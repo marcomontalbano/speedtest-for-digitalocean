@@ -28,20 +28,20 @@ class Results extends Component {
         });
     }
 
-    renderRow(row) {
+    renderRow(result, store) {
         return (
-            <tr key={row.name} className={this.state.speedtestStore.isRunning && this.state.speedtestStore.test.name === row.name ? 'uk-active' : null}>
-                <td>{this.state.speedtestStore.isRunning && this.state.speedtestStore.test.name === row.name ? (<Spinner></Spinner>) : null}</td>
-                <td><a target="_blank" href={row.test ? row.test.url : '#'}>{row.name}</a></td>
-                <td>{row.test ? row.test.region : ''}</td>
-                <td>{row.ping     ? `${row.ping} ms`                           : ''}</td>
-                <td>{row.download ? `${(row.download / 1000).toFixed(2)} Mb/s` : ''}</td>
-                <td>{row.upload   ? `${(row.upload   / 1000).toFixed(2)} Mb/s` : ''}</td>
+            <tr key={result.name} className={store.isRunning && store.currentDatacenter.name === result.name ? 'uk-active' : null}>
+                <td>{store.isRunning && store.currentDatacenter.name === result.name ? (<Spinner></Spinner>) : null}</td>
+                <td><a target="_blank" href={result.datacenter ? result.datacenter.url : '#'}>{result.name}</a></td>
+                <td>{result.datacenter ? result.datacenter.region : ''}</td>
+                <td>{result.ping     ? `${result.ping} ms`                           : ''}</td>
+                <td>{result.download ? `${(result.download / 1000).toFixed(2)} Mb/s` : ''}</td>
+                <td>{result.upload   ? `${(result.upload   / 1000).toFixed(2)} Mb/s` : ''}</td>
             </tr>
         );
     }
 
-    renderResults(state) {
+    renderResults(store) {
         return (
             <table className="uk-table uk-table-divider uk-text-align-center uk-table-responsive">
                 <thead>
@@ -56,8 +56,8 @@ class Results extends Component {
                 </thead>
                 <tbody>
                     {
-                        _.map(state.results, (item, key) => {
-                            return this.renderRow(item);
+                        _.map(store.results, (result, key) => {
+                            return this.renderRow(result, store);
                         })
                     }
                 </tbody>
