@@ -58,18 +58,21 @@ a:hover {
 
 .github-link {
   position: absolute;
-  right: -60px;
-  top: 0;
   transform: rotate(45deg);
   font-size: 0;
   z-index: 1;
+  padding: 0;
+  margin: 0;
+  height: 70px;
+  top: -10px;
+  right: -45px;
 }
 .github-link i,
 .github-link img {
   position: absolute;
   font-size: 40px;
   width: 36px;
-  left: 60px;
+  left: 70px;
   top: 35px;
   color: #0080FF;
   transform: translate(-50%, -50%);
@@ -78,9 +81,17 @@ a:hover {
   content: "";
   width: 0; 
   height: 0; 
-  border-left: 60px solid transparent;
-  border-right: 60px solid transparent;
-  border-bottom: 60px solid white;
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-bottom: 70px solid white;
+}
+#version {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 10px;
+  color: #0080FF;
+  text-align: center;
 }
 
 
