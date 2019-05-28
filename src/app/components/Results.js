@@ -32,7 +32,7 @@ class Results extends Component {
         return (
             <tr key={result.name} className={store.isRunning && store.currentDatacenter.name === result.name ? 'uk-active' : null}>
                 <td>{store.isRunning && store.currentDatacenter.name === result.name ? (<Spinner></Spinner>) : null}</td>
-                <td><a target="_blank" href={result.datacenter ? result.datacenter.url : '#'}>{result.name}</a></td>
+                <td><a rel="noopener noreferrer" target="_blank" href={result.datacenter ? result.datacenter.url : '#'}>{result.name}</a></td>
                 <td>{result.datacenter ? result.datacenter.region : ''}</td>
                 <td>{result.ping     ? `${result.ping} ms`                           : ''}</td>
                 <td>{result.download ? `${(result.download / 1000).toFixed(2)} Mb/s` : ''}</td>

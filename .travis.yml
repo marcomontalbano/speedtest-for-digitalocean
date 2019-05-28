@@ -6,8 +6,8 @@ node_js:
   - "8"
 
 script:
-  - yarn test
-  - yarn build
+  - npm test
+  - npm run build
 
 stages:
   - test
@@ -19,4 +19,4 @@ jobs:
     - stage: deploy
       node_js: "8"
       script:
-        - yarn deploy
+        - npm run deploy
