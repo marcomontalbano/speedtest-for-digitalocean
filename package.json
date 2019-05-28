@@ -1,6 +1,6 @@
 {
   "name": "speedtest-for-digitalocean",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "private": true,
   "description": "Run speed tests for all DigitalOcean datacenters faster than ever.",
   "homepage": "http://speedtest-do.marcomontalbano.com/",
@@ -24,7 +24,7 @@
     "datacenter"
   ],
   "engines": {
-    "node": "6.x || 7.x || 8.x"
+    "node": "8.x || 10.x || 11.x || 12.x"
   },
   "dependencies": {
     "lodash": "^4.17.11"
