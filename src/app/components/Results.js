@@ -15,14 +15,14 @@ class Results extends Component {
     }
 
     componentDidMount() {
-        this.listener = SpeedtestStore.addListener(this.onSpeedtestStoreHandler.bind(this));
+        this.listener = SpeedtestStore.addListener(this.onSpeedtestStoreHandler);
     }
 
     componentWillUnmount() {
         this.listener.remove();
     }
 
-    onSpeedtestStoreHandler() {
+    onSpeedtestStoreHandler = () => {
         this.setState({
             speedtestStore: SpeedtestStore.getState()
         });

@@ -18,20 +18,20 @@ class Filter extends Component {
     }
 
     componentDidMount() {
-        this.listener = SpeedtestStore.addListener(this.onSpeedtestStoreHandler.bind(this));
+        this.listener = SpeedtestStore.addListener(this.onSpeedtestStoreHandler);
     }
 
     componentWillUnmount() {
         this.listener.remove();
     }
 
-    onSpeedtestStoreHandler() {
+    onSpeedtestStoreHandler = () => {
         this.setState({
             speedtestStore: SpeedtestStore.getState()
         });
     }
 
-    startStopHandler() {
+    startStopHandler = () => {
         if (this.state.speedtestStore.isRunning)  {
             this.props.speedtest.stop();
         } else {
@@ -43,7 +43,7 @@ class Filter extends Component {
         }
     }
 
-    filterDatacentersHandler(e) {
+    filterDatacentersHandler = (e) => {
         const val = e.target.value;
 
         this.setState(prevState => ({
@@ -51,13 +51,13 @@ class Filter extends Component {
         }));
     }
 
-    filterHandler() {
+    filterHandler = () => {
         this.setState(prevState => ({
             isFilterOpen: !prevState.isFilterOpen
         }));
     }
 
-    checkFastestsHandler(e) {
+    checkFastestsHandler = (e) => {
         this.setState({
             checkFastests: e.target.checked
         });
@@ -67,7 +67,7 @@ class Filter extends Component {
         return items.length > 0 ? _.map(items, (item, key) => (
             <div key={key} className="Datacenter uk-width-1-2">
                 <label>
-                    <input disabled={this.state.speedtestStore.isRunning} onChange={this.filterDatacentersHandler.bind(this)} className="uk-checkbox" type="checkbox" value={item.name} defaultChecked={this.state.filterDatacenters.indexOf(item.name) >= 0} /> {item.name}
+                    <input disabled={this.state.speedtestStore.isRunning} onChange={this.filterDatacentersHandler} className="uk-checkbox" type="checkbox" value={item.name} defaultChecked={this.state.filterDatacenters.indexOf(item.name) >= 0} /> {item.name}
                 </label>
             </div>
         )) : null;
@@ -93,16 +93,16 @@ class Filter extends Component {
                         <form>
                             <fieldset className="uk-fieldset">
                                 <label>
-                                    <input className="uk-checkbox" type="checkbox" onClick={this.checkFastestsHandler.bind(this)} disabled={this.state.speedtestStore.isRunning} defaultChecked={this.state.checkFastests} /> Check only the fastest {this.state.fastestsQnt}
+                                    <input className="uk-checkbox" type="checkbox" onClick={this.checkFastestsHandler} disabled={this.state.speedtestStore.isRunning} defaultChecked={this.state.checkFastests} /> Check only the fastest {this.state.fastestsQnt}
                                 </label>
                             </fieldset>
                         </form>
                     </div>
                     <div className="uk-width-1-1 uk-width-1-5@s uk-text-center">
-                        <button className="uk-button uk-button-primary uk-width-1-1" onClick={this.startStopHandler.bind(this)}>{this.state.speedtestStore.isRunning ? 'stop' : 'start'}</button>
+                        <button className="uk-button uk-button-primary uk-width-1-1" onClick={this.startStopHandler}>{this.state.speedtestStore.isRunning ? 'stop' : 'start'}</button>
                     </div>
                     <div className="uk-width-1-1 uk-width-1-5@s uk-text-center">
-                        <button className="uk-button uk-button-default uk-width-1-1" onClick={this.filterHandler.bind(this)}>filter</button>
+                        <button className="uk-button uk-button-default uk-width-1-1" onClick={this.filterHandler}>filter</button>
                     </div>
                 </div>
                 { this.state.isFilterOpen &&
