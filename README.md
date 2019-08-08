@@ -19,9 +19,21 @@ Just click start!
 
 This tool uses the same service used by __speedtest-*.digitalocean.com__ so the result should be the same.
 
+
 ## Need an account for DigitalOcean?
 
 Click [here](https://m.do.co/c/45b8cffe90f8) to register a new one!
+
+
+## Privacy
+
+Google Analytics is used to record the following:
+
+* [Basic visit data](https://support.google.com/analytics/answer/6004245?ref_topic=2919631).
+* `ping`, `download` and `upload` speed for each region in order to provide the consultable table.
+
+Clicking on `start` you accept this terms & condition; no additional data is sent to the server.
+
 
 ## Development stuff
 

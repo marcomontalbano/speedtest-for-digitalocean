@@ -34,18 +34,15 @@ a:hover {
   border-bottom: 1px solid;
 }
 
-.do-account {
-  margin-top: 30px;
-}
 .do-account span, .do-account img {
   width: 220px;
 }
 .do-account a, .do-account a:hover {
   border: 0px hidden;
   display: inline-block;
+  margin-left: -50px;
 }
 .do-account span {
-  padding-left: 50px;
   display: block;
   margin: 0 auto;
   box-sizing: border-box;
@@ -149,4 +146,50 @@ header h3 {
   header h1 {
     padding: 25px 0 0;
   }
+}
+
+.hide-text {
+  display: inline-block;
+  text-indent: -9999px;
+  white-space: nowrap;
+}
+
+.main-content {
+  min-height: calc(100vh - 14px - 45px - 15px - 30px);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 30px 0 15px;
+  padding: 0;
+  text-align: center;
+  list-style: none;
+}
+
+.footer li {
+  font-size: 14px;
+  line-height: 14px;
+  border-left: 1px solid rgba(102, 165, 255, .5);
+  padding: 0 .6em;
+}
+.footer li:first-child {
+  border-left: none;
+}
+
+.badges {
+  margin: 15px;
+  text-align: center
+}
+.badges a:hover {
+  text-decoration: none;
+  border: none;
+}
+.badges img {
+  height: 16px;
+}
+.badges img.beer {
+  height: 28px;
+  vertical-align: sub;
 }
