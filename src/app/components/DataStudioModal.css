@@ -1,0 +1,86 @@
+body header, body .App {
+  transition: filter .3s;
+  filter: blur(0px);
+}
+
+body.DataStudioModal__open {
+  overflow: hidden;
+}
+
+body.DataStudioModal__open header, body.DataStudioModal__open .App {
+  filter: blur(6px);
+}
+
+body.DataStudioModal-Map__open .DataStudioModal.Map,
+body.DataStudioModal-Data__open .DataStudioModal.Data {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.DataStudioModal {
+  opacity: 0;
+  transition: opacity .3s;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, .9);
+  /* background: rgba(2, 128, 255, .7); */
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.DataStudioModal .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 15px 20px 15px;
+}
+
+.DataStudioModal-content {
+  display: inline-block;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* width: 90%; */
+  /* max-width: 1100px; */
+  /* pointer-events: none; */
+}
+
+.DataStudioModal-ratio {
+  opacity: 0;
+  /* width: 85vh;
+  width: 85vh;
+  max-width: 100vw; */
+
+  max-width: 100vw;
+  max-height: 85vh;
+}
+
+.DataStudioModal-disclaimer {
+  transform: translateY(150%);
+  text-align: center;
+  font-size: 12px;
+}
+
+.DataStudioModal.Map .DataStudioModal-ratio {
+  /* width: 120vh; */
+}
+
+.DataStudioModal-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.DataStudioModal-iframe:-webkit-full-screen {
+  background-color: #fff;
+}

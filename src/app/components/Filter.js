@@ -74,6 +74,16 @@ class Filter extends Component {
         }));
     }
 
+    mapHandler = () => {
+        document.body.classList.toggle('DataStudioModal__open');
+        document.body.classList.toggle('DataStudioModal-Map__open');
+    }
+
+    dataHandler = () => {
+        document.body.classList.toggle('DataStudioModal__open');
+        document.body.classList.toggle('DataStudioModal-Data__open');
+    }
+
     checkFastestsHandler = (e) => {
         this.setState({
             checkFastests: e.target.checked
@@ -130,11 +140,15 @@ class Filter extends Component {
                             </fieldset>
                         </form>
                     </div>
-                    <div className="uk-width-1-1 uk-width-1-5@s uk-text-center">
+                    <div className="uk-width-2-3 uk-width-1-5@s uk-text-center">
                         <button disabled={this.state.filterDatacenters.length === 0} className="uk-button uk-button-primary uk-width-1-1" onClick={this.startStopHandler}>{this.state.speedtestStore.isRunning ? 'stop' : 'start'}</button>
                     </div>
-                    <div className="uk-width-1-1 uk-width-1-5@s uk-text-center">
-                        <button className="uk-button uk-button-default uk-width-1-1" onClick={this.filterHandler}>filter</button>
+                    <div className="uk-width-1-3 uk-width-1-5@s uk-text-center">
+                        <div className="uk-button-group uk-width-1-1">
+                            <button className="uk-button uk-button-link uk-padding-small" onClick={this.filterHandler}><i className="fa fa-filter" aria-hidden="true"></i></button>
+                            <button className="uk-button uk-button-link uk-padding-small" onClick={this.mapHandler}><i className="fa fa-map-o" aria-hidden="true"></i></button>
+                            <button className="uk-button uk-button-link uk-padding-small uk-visible@m" onClick={this.dataHandler}><i className="fa fa-tachometer" aria-hidden="true"></i></button>
+                        </div>
                     </div>
                 </div>
                 { this.state.isFilterOpen &&

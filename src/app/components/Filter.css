@@ -15,6 +15,12 @@
   font-weight: bold;
 }
 
+.Filter .uk-button-group .uk-button.uk-padding-small {
+  padding-top: 9.5px;
+  padding-bottom: 9.5px;
+  margin: 0 auto;
+}
+
 .Filter .Continent .Datacenter {
   font-size: 90%;
   vertical-align: middle;

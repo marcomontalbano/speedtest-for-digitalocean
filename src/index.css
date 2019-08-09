@@ -29,10 +29,6 @@ a {
   transition: color .3s, border .3s;
   border-bottom: 1px solid transparent;
 }
-a:hover {
-  text-decoration: none;
-  border-bottom: 1px solid;
-}
 
 .do-account span, .do-account img {
   width: 220px;
@@ -53,8 +49,12 @@ a:hover {
   margin-top: 25px;
 }
 
-.github-button {
+.github-buttons a {
   margin: 0 4px;
+  vertical-align: bottom;
+}
+
+.github-button {
   border-bottom: 0px hidden !important;
   display: inline-block;
   font-size: 0;
@@ -144,7 +144,9 @@ header h3 {
 }
 @media (max-width: 450px) {
   header h1 {
-    padding: 25px 0 0;
+    padding: 42px 0 0;
+    font-size: 36px;
+    line-height: 45px;
   }
 }
 
