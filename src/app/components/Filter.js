@@ -51,6 +51,23 @@ class Filter extends Component {
         }));
     }
 
+    filterContinentHandler = (e) => {
+        const continent = e.target.value;
+        const datacenters = this.props.speedtest.datacenters
+            .filter(o => o.continent === continent)
+            .map(o => o.name);
+
+        if (e.target.checked) {
+            this.setState(prevState => ({
+                filterDatacenters: _.union(prevState.filterDatacenters, datacenters)
+            }));
+        } else {
+            this.setState(prevState => ({
+                filterDatacenters: _.difference(prevState.filterDatacenters, datacenters)
+            }));
+        }
+    }
+
     filterHandler = () => {
         this.setState(prevState => ({
             isFilterOpen: !prevState.isFilterOpen
@@ -63,29 +80,44 @@ class Filter extends Component {
         });
     }
 
+    isDatacenterSelected = (datacenter) => {
+        return this.state.filterDatacenters.indexOf(datacenter.name) >= 0;
+    }
+
     renderDatacenters(items) {
         return items.length > 0 ? _.map(items, (item, key) => (
             <div key={key} className="Datacenter uk-width-1-2">
                 <label>
-                    <input disabled={this.state.speedtestStore.isRunning} onChange={this.filterDatacentersHandler} className="uk-checkbox" type="checkbox" value={item.name} defaultChecked={this.state.filterDatacenters.indexOf(item.name) >= 0} /> {item.name}
+                    <input
+                        type="checkbox" className="uk-checkbox" value={item.name}
+                        disabled={this.state.speedtestStore.isRunning}
+                        onChange={this.filterDatacentersHandler}
+                        checked={this.isDatacenterSelected(item)} /> {item.name}
                 </label>
             </div>
         )) : null;
     }
 
     renderContinents(items) {
-        const continents = _.uniq(_.map(items, o => o.continent));
-        return continents.length > 0 ? _.map(continents, (continent, key) => (
-            <div key={key} className="Continent uk-width-1-2 uk-width-1-3@m">
-                <label className="uk-form-label">{continent}</label>
+        const datacentersGroupedByContinent = _.groupBy(items, 'continent');
+        return Object.entries(datacentersGroupedByContinent).map(([continent, datacenters]) => (
+            <div key={continent} className="Continent uk-width-1-2 uk-width-1-3@m">
+                <label className="uk-form-label">
+                    <input
+                        type="checkbox" className="uk-checkbox" value={continent}
+                        disabled={this.state.speedtestStore.isRunning}
+                        onChange={this.filterContinentHandler}
+                        checked={datacenters.every(this.isDatacenterSelected)} /> {continent}
+                </label>
                 <div className="uk-form-controls uk-grid">
-                    {this.renderDatacenters(_.filter(items, o => o.continent === continent))}
+                    {this.renderDatacenters(datacenters)}
                 </div>
             </div>
-        )) : null;
+        ));
     }
 
     render() {
+        console.log('here')
         return (
             <div className="Filter uk-container">
                 <div className="uk-grid">
@@ -99,7 +131,7 @@ class Filter extends Component {
                         </form>
                     </div>
                     <div className="uk-width-1-1 uk-width-1-5@s uk-text-center">
-                        <button className="uk-button uk-button-primary uk-width-1-1" onClick={this.startStopHandler}>{this.state.speedtestStore.isRunning ? 'stop' : 'start'}</button>
+                        <button disabled={this.state.filterDatacenters.length === 0} className="uk-button uk-button-primary uk-width-1-1" onClick={this.startStopHandler}>{this.state.speedtestStore.isRunning ? 'stop' : 'start'}</button>
                     </div>
                     <div className="uk-width-1-1 uk-width-1-5@s uk-text-center">
                         <button className="uk-button uk-button-default uk-width-1-1" onClick={this.filterHandler}>filter</button>
