@@ -18,6 +18,6 @@ stages:
 jobs:
   include:
     - stage: deploy
-      node_js: "10"
+      node_js: "12"
       script:
         - npm run deploy
