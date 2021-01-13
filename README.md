@@ -1,7 +1,7 @@
 Speed Test for DigitalOcean
 ===========================
 
-[![Build Status](https://travis-ci.org/marcomontalbano/speedtest-for-digitalocean.svg?branch=master)](https://travis-ci.org/marcomontalbano/speedtest-for-digitalocean)
+[![Build Status](https://travis-ci.com/marcomontalbano/speedtest-for-digitalocean.svg?branch=master)](https://travis-ci.com/marcomontalbano/speedtest-for-digitalocean)
 [![Beerpay](https://beerpay.io/marcomontalbano/speedtest-for-digitalocean/badge.svg?style=beer)](https://beerpay.io/marcomontalbano/speedtest-for-digitalocean)
 [![Beerpay](https://img.shields.io/badge/make-wish-f95c5c.svg)](https://beerpay.io/marcomontalbano/speedtest-for-digitalocean)
 [![PayPal.me](https://img.shields.io/badge/paypal-donate-119fde.svg)](https://www.paypal.me/marcomontalbano)
