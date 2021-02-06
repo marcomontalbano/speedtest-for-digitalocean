@@ -7,4 +7,5 @@ l.rel = 'stylesheet';
 
 document.body.setAttribute('id', 'st4do-root');
 document.head.innerHTML = '';
+document.body.innerHTML = '';
 document.head.append(s, l);
