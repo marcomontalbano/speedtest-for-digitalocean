@@ -38,15 +38,18 @@
     "react-app-rewired": "^2.1.8",
     "react-dom": "^17.0.1",
     "react-scripts": "^4.0.2",
+    "react-snap": "^1.23.0",
     "uikit": "^3.6.16",
     "write-assets-webpack-plugin": "^1.0.5"
   },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
+    "postbuild": "react-snap",
     "test": "react-app-rewired test --env=jsdom",
     "gh-pages": "node ./scripts/gh-pages.js",
-    "deploy": "npm-run-all build gh-pages"
+    "deploy": "npm-run-all build gh-pages",
+    "bookmark": "npx bookmarklet bookmark.js"
   },
   "browserslist": {
     "production": [

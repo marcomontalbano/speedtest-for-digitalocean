@@ -4,13 +4,13 @@ import SpeedtestAction from '../actions/SpeedtestAction';
 export default class Speedtest extends SpeedtestDigitalocean {
 
     _gaEvent(action, value) {
-        window.ga('send', {
-            hitType: 'event',
-            eventCategory: 'SpeedTest',
-            eventAction: action,
-            eventLabel: this.currentTest.name,
-            eventValue: Math.round(value)
-        });
+        // window.ga('send', {
+        //     hitType: 'event',
+        //     eventCategory: 'SpeedTest',
+        //     eventAction: action,
+        //     eventLabel: this.currentTest.name,
+        //     eventValue: Math.round(value)
+        // });
     }
 
     currentTest_update(key, value) {

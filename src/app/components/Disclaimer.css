@@ -1,0 +1,7 @@
+.Disclaimer .link {
+    display: inline-block;
+    margin: 10px 0 0;
+    border: 1px solid #1e87f0;
+    padding: 10px;
+    border-radius: 2px;
+}

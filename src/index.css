@@ -89,7 +89,8 @@ a:hover {
   border-right: 70px solid transparent;
   border-bottom: 70px solid white;
 }
-#version {
+
+.version {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -181,6 +182,9 @@ header h3 {
 .badges {
   margin: 15px;
   text-align: center
+}
+.badges a {
+  margin: 0 2px;
 }
 .badges a:hover {
   text-decoration: none;

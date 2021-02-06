@@ -117,7 +117,6 @@ class Filter extends Component {
     }
 
     render() {
-        console.log('here')
         return (
             <div className="Filter uk-container">
                 <div className="uk-grid">

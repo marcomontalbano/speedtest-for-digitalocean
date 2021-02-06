@@ -32,30 +32,6 @@ module.exports = function override(config, env) {
     'process.env.ENVIRONMENT': JSON.stringify(process.env.ENVIRONMENT)
   }));
 
-  if (process.env.NODE_ENV === 'development') {
-
-    // create build folder also in devMode
-    config.plugins.push(new WriteAssetsWebpackPlugin({
-      force: true,
-      extension: ['js', 'css', 'svg', 'html', 'jpeg', 'jpg', 'png', 'json']
-    }));
-
-    // generate css file also in devMode
-    config.module.rules.forEach(rule => {
-      if (rule.oneOf) {
-        rule.oneOf.forEach(loader => {
-          if (loader.use) {
-            loader.use = [
-              { loader: MiniCssExtractPlugin.loader },
-              ...loader.use.filter(use => use !== require.resolve('style-loader') && use.loader !== MiniCssExtractPlugin.loader)
-            ];
-          }
-        });
-      }
-    });
-
-  }
-
   return config;
 
 };
