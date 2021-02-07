@@ -6,7 +6,7 @@ export const Disclaimer = () => {
     return (
         <div className="Disclaimer uk-container">
             <div className="uk-alert-warning uk-alert">
-                <p>Bad news. Unfortunately, this application is no more working from this domain since the speed test service is now validating the domain name.</p>
+                <p>Bad news. Unfortunately, this application is not working anymore from this domain since the speed test service is now validating the domain name.</p>
             </div>
 
             <div className="uk-alert-success uk-alert">
