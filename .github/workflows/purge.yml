@@ -1,0 +1,21 @@
+name: Purge
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Purge cache - main.js 🗑
+        uses: wei/curl@v1
+        with:
+          args: https://purge.jsdelivr.net/gh/marcomontalbano/speedtest-for-digitalocean@latest/static/js/main.js
+
+      - name: Purge cache - main.css 🗑
+        uses: wei/curl@v1
+        with:
+          args: https://purge.jsdelivr.net/gh/marcomontalbano/speedtest-for-digitalocean@latest/static/css/main.css
