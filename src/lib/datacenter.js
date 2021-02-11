@@ -42,6 +42,12 @@ export default [
         url: 'http://speedtest-sfo2.digitalocean.com'
     },
     {
+        name: 'SFO3',
+        continent: 'North America',
+        region: 'San Francisco',
+        url: 'http://speedtest-sfo3.digitalocean.com'
+    },
+    {
         name: 'SGP1',
         continent: 'Asia',
         region: 'Singapore',
