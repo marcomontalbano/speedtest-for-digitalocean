@@ -27,7 +27,7 @@
     "node": "12.x || 14.x"
   },
   "dependencies": {
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "flux": "^4.0.1",
