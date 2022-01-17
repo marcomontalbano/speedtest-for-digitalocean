@@ -10,7 +10,7 @@ I created this repository to speed up this process.
 
 Run speed tests for all DigitalOcean datacenters faster than ever.
 
-[http://speedtest-do.marcomontalbano.com](http://speedtest-do.marcomontalbano.com)
+[https://speedtest-do.marcomontalbano.com](https://speedtest-do.marcomontalbano.com)
 
 Just click start!
 
@@ -27,7 +27,7 @@ Of course, the valid domain is the DigitalOcean domain. Given that, I decided to
 
 ### How does it work?
 
-When Travis CI builds the website and publishes it to GitHub Pages, two files are generated (`main.js` and `main.css`). They are used both to render the website hosted at [speedtest-do.marcomontalbano.com](http://speedtest-do.marcomontalbano.com/) and to render the injected application at [speedtest-nyc1.digitalocean.com](http://speedtest-nyc1.digitalocean.com/).
+When Travis CI builds the website and publishes it to GitHub Pages, two files are generated (`main.js` and `main.css`). They are used both to render the website hosted at [speedtest-do.marcomontalbano.com](https://speedtest-do.marcomontalbano.com/) and to render the injected application at [speedtest-nyc1.digitalocean.com](https://speedtest-nyc1.digitalocean.com/).
 
 The `bookmark` is simply a javascript code that injects both files in the website in a similar way:
 

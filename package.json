@@ -1,6 +1,6 @@
 {
   "name": "speedtest-for-digitalocean",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": true,
   "description": "Run speed tests for all DigitalOcean datacenters faster than ever.",
   "homepage": "http://speedtest-do.marcomontalbano.com/",
@@ -24,22 +24,22 @@
     "datacenter"
   ],
   "engines": {
-    "node": "12.x || 14.x"
+    "node": "14.x"
   },
   "dependencies": {
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "flux": "^4.0.1",
-    "gh-pages": "^3.1.0",
+    "flux": "^4.0.3",
+    "gh-pages": "^3.2.3",
     "npm-run-all": "^4.1.5",
-    "prop-types": "^15.7.2",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
-    "react-app-rewired": "^2.1.8",
+    "react-app-rewired": "^2.1.11",
     "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^5.0.0",
     "react-snap": "^1.23.0",
-    "uikit": "^3.6.21",
+    "uikit": "^3.10.0",
     "write-assets-webpack-plugin": "^1.0.5"
   },
   "scripts": {
