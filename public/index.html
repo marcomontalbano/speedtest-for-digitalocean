@@ -12,10 +12,10 @@
     <meta name="author" content="Marco Montalbano">
     <script>
       (function () {
-        if (location.protocol === 'https:') {
-          location.href = location.href.replace(location.protocol, 'http:');
-          return;
-        }
+        // if (location.protocol === 'https:') {
+        //   location.href = location.href.replace(location.protocol, 'http:');
+        //   return;
+        // }
         var isProd = location.hostname === 'speedtest-do.marcomontalbano.com';
         window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
         ga('create', isProd ? 'UA-50467643-10' : 'UA-50467643-7', 'auto');
