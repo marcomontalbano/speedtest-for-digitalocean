@@ -1,6 +1,6 @@
 {
   "name": "speedtest-for-digitalocean",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "private": true,
   "description": "Run speed tests for all DigitalOcean datacenters faster than ever.",
   "homepage": "http://speedtest-do.marcomontalbano.com/",
