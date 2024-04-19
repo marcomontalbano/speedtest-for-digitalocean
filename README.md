@@ -1,5 +1,4 @@
-Speed Test for DigitalOcean
-===========================
+# Speed Test for DigitalOcean
 
 [![Build Status](https://travis-ci.com/marcomontalbano/speedtest-for-digitalocean.svg?branch=master)](https://travis-ci.com/marcomontalbano/speedtest-for-digitalocean)
 [![PayPal.me](https://img.shields.io/badge/paypal-donate-119fde.svg)](https://www.paypal.me/marcomontalbano)
