@@ -1,8 +1,7 @@
 # Speed Test for DigitalOcean
 
-[![Build Status](https://travis-ci.com/marcomontalbano/speedtest-for-digitalocean.svg?branch=master)](https://travis-ci.com/marcomontalbano/speedtest-for-digitalocean)
-[![PayPal.me](https://img.shields.io/badge/paypal-donate-119fde.svg)](https://www.paypal.me/marcomontalbano)
-[![Sponsor](https://img.shields.io/badge/-Sponsor-fafbfc?logo=GitHub%20Sponsors)](https://github.com/sponsors/marcomontalbano)
+> [!WARNING]
+> Unfortunately, this service is no longer available, as DigitalOcean's regional speedtest subdomains, such as [speedtest-nyc1.digitalocean.com](https://speedtest-nyc1.digitalocean.com/), are no longer up and running. As [suggested by them](https://www.digitalocean.com/community/questions/how-to-test-digitalocean-speed-and-ping-now), you can refer to their new documentation for instructions on [how to test latency](https://docs.digitalocean.com/products/paperspace/machines/how-to/test-latency/).
 
 DigitalOcean provides usefull links to run speed tests for each datacenter, but only one at a time.
 I created this repository to speed up this process.
